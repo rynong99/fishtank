@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bcg27kw6bkjj4" path="res://player2.gd" id="1_i25i0"]
 
 [sub_resource type="Gradient" id="Gradient_onrkg"]
-offsets = PackedFloat32Array(0.425325, 0.467532)
+offsets = PackedFloat32Array(0.425325, 0.428571)
 colors = PackedColorArray(0, 0, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
