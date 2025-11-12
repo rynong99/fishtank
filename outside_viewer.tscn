@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqcoa3gbbljx1"]
+[gd_scene load_steps=3 format=3 uid="uid://dqcoa3gbbljx1"]
 
+[ext_resource type="Script" uid="uid://is7bsb3vbypb" path="res://running_light.gd" id="1_t3i44"]
 [ext_resource type="PackedScene" uid="uid://d1yph1vvvay2r" path="res://tank_move_test.tscn" id="1_uwmg1"]
 
 [node name="OutsideViewer" type="Control"]
@@ -9,6 +10,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Running Light" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 159.0
+offset_right = 721.0
+offset_bottom = 191.0
+color = Color(1, 0, 0, 1)
+script = ExtResource("1_t3i44")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1

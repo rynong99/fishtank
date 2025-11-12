@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Fish1
 @export var speed = 1000
 var velocity = Vector2.ZERO
 func _physics_process(delta: float) -> void:
