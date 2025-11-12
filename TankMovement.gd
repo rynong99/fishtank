@@ -16,7 +16,9 @@ func _physics_process(delta: float) -> void:
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
 		velocity = Vector2.ZERO
-	move_and_slide()
+	var collision = move_and_collide(velocity*delta)
+	if collision:
+		DirectionController.running = false
 func get_tank_direction():
 	tank_direction = DirectionController.direction
 func get_tank_rotation():

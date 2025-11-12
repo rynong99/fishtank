@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Running Light" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 689.0
 offset_top = 159.0
 offset_right = 721.0
