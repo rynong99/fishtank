@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1yph1vvvay2r"]
+[gd_scene load_steps=19 format=3 uid="uid://d1yph1vvvay2r"]
 
 [ext_resource type="Script" uid="uid://dt2vyjbtaejoq" path="res://TankMovement.gd" id="1_ilxhq"]
 
@@ -27,6 +27,32 @@ gradient = SubResource("Gradient_rqrev")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogedf"]
 size = Vector2(128, 20)
+
+[sub_resource type="Gradient" id="Gradient_s8t7o"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rqrev"]
+gradient = SubResource("Gradient_s8t7o")
+
+[sub_resource type="Gradient" id="Gradient_ilxhq"]
+offsets = PackedFloat32Array(0.214286, 1)
+colors = PackedColorArray(0.571927, 0.249553, 0.127634, 1, 0.571927, 0.249553, 0.127634, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s8t7o"]
+gradient = SubResource("Gradient_ilxhq")
+fill = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilxhq"]
+
+[sub_resource type="Gradient" id="Gradient_nxqqa"]
+offsets = PackedFloat32Array(0.457792, 0.470779)
+colors = PackedColorArray(0.568627, 0.247059, 0.12549, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0s1gw"]
+gradient = SubResource("Gradient_nxqqa")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nxqqa"]
 
@@ -89,7 +115,329 @@ shape = SubResource("RectangleShape2D_ogedf")
 [node name="Sprite2D" type="Sprite2D" parent="Finish Line"]
 position = Vector2(-200, -960)
 scale = Vector2(1.9375, 0.21875)
-texture = SubResource("GradientTexture2D_ijqg4")
+texture = SubResource("GradientTexture2D_rqrev")
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 55)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle4" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 50)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle4"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle2" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(17, 57)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle2"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle3" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(17, 52)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle3"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle5" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 45)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle5"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle5"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle6" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 40)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle6"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle6"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle9" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 55)
+scale = Vector2(0.061154, 0.0937685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle9"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle9"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle10" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 50)
+scale = Vector2(0.061154, 0.0937685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle10"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle10"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle11" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(17, 57)
+scale = Vector2(0.061154, 0.0937685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle11"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle11"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle12" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(17, 52)
+scale = Vector2(0.061154, 0.0937685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle12"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle12"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle13" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 45)
+scale = Vector2(0.061154, 0.0937685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle13"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle13"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle14" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(8, 40)
+scale = Vector2(0.061154, 0.0937685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle14"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle14"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Pit" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(12, 37)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit2" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(13, 35)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit2"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit2"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit3" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(13, 63)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit3"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit3"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit4" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(11, 32)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit4"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit4"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit5" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(12, 31)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit5"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit5"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit6" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(11, 30)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit6"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit6"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit7" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(11, 32)
+scale = Vector2(0.0630075, 0.0894482)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit7"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit7"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit8" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(12, 31)
+scale = Vector2(0.0630075, 0.0894482)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit8"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit8"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Pit9" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(11, 30)
+scale = Vector2(0.0630075, 0.0894482)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit9"]
+position = Vector2(-192, -960)
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pit9"]
+position = Vector2(-192, -960)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_0s1gw")
+
+[node name="Obstacle7" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(17, 47)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle7"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle7"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
+
+[node name="Obstacle8" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(17, 42)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle8"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle8"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_s8t7o")
 
 [node name="Tank" type="CharacterBody2D" parent="."]
 script = ExtResource("1_ilxhq")

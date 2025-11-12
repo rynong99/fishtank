@@ -16,7 +16,7 @@ fill_from = Vector2(0.502294, 0.502294)
 [node name="Player2" type="RigidBody2D"]
 gravity_scale = 0.0
 can_sleep = false
-linear_damp = 1.0
+linear_damp = 3.0
 script = ExtResource("1_i25i0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

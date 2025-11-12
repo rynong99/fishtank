@@ -6,24 +6,27 @@ var turn_left : bool = false
 
 func _process(delta: float) -> void:
 	#Stops the tank if both controls are activated
-	if driving:
-		DirectionController.direction = "Forward"
-	elif reverse:
-		DirectionController.direction = "Reverse"
+	if DirectionController.running:
+		if driving:
+			DirectionController.direction = "Forward"
+		elif reverse:
+			DirectionController.direction = "Reverse"
+		else:
+			DirectionController.direction = "Stopped"
+		if turn_right and (driving or reverse):
+			DirectionController.rotation = "Right"
+		elif turn_left and (driving or reverse):
+			DirectionController.rotation = "Left"
+		else:
+			DirectionController.rotation = "Straight"
+		if driving and reverse:
+			DirectionController.direction = "Stopped"
+		if turn_left and turn_right:
+			DirectionController.direction = "Stopped"
+			DirectionController.rotation = "Straight"
 	else:
 		DirectionController.direction = "Stopped"
-	if turn_right and (driving or reverse):
-		DirectionController.rotation = "Right"
-	elif turn_left and (driving or reverse):
-		DirectionController.rotation = "Left"
-	else:
 		DirectionController.rotation = "Straight"
-	if driving and reverse:
-		DirectionController.direction = "Stopped"
-	if turn_left and turn_right:
-		DirectionController.direction = "Stopped"
-		DirectionController.rotation = "Straight"
-		
 	#Activates controls and sends signals to the global tank controller
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true
