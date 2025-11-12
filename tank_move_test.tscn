@@ -446,6 +446,7 @@ script = ExtResource("1_ilxhq")
 texture = SubResource("CanvasTexture_nxqqa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tank"]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_s8t7o")
 
 [node name="Camera2D" type="Camera2D" parent="Tank"]
