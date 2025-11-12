@@ -3,7 +3,6 @@ var speed = 50
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
 func _physics_process(delta: float) -> void:
-	
 	get_tank_direction()
 	get_tank_rotation()
 	var direction = Vector2.UP.rotated(rotation)

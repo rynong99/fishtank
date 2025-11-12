@@ -45,6 +45,49 @@ text = "Right
 
 "
 
+[node name="Wires" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(1118, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wires"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wires"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Wires"]
+offset_left = -28.0
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Wires
+
+
+"
+
+[node name="Start Button" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(37, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Button"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Start Button"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Start Button"]
+offset_left = -28.0
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Start Button
+
+
+
+"
+
 [node name="Left" type="Area2D" parent="."]
 z_index = -1
 position = Vector2(384, 315)
@@ -129,6 +172,8 @@ shape = SubResource("WorldBoundaryShape2D_h2yge")
 
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
 [connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
+[connection signal="body_entered" from="Wires" to="." method="_on_wires_body_entered"]
+[connection signal="body_entered" from="Start Button" to="." method="_on_start_button_body_entered"]
 [connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
 [connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]
 [connection signal="body_entered" from="Reverse" to="." method="_on_reverse_body_entered"]
