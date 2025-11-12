@@ -2,6 +2,7 @@ extends CharacterBody2D
 var speed = 50
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
+var crashed = false
 func _physics_process(delta: float) -> void:
 	get_tank_direction()
 	get_tank_rotation()
@@ -18,7 +19,11 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	var collision = move_and_collide(velocity*delta)
 	if collision:
-		DirectionController.running = false
+		if not crashed:
+			DirectionController.running = false
+			crashed = true
+	else:
+		crashed = false
 func get_tank_direction():
 	tank_direction = DirectionController.direction
 func get_tank_rotation():
