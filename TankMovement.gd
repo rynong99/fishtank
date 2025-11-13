@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 			crashed = true
 	else:
 		crashed = false
+
 func get_tank_direction():
 	tank_direction = DirectionController.direction
 func get_tank_rotation():
 	tank_rotation = DirectionController.rotation
-	

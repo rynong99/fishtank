@@ -5,12 +5,38 @@ var turn_right : bool = false
 var turn_left : bool = false
 var can_start : bool = false
 
+
+# Camera shake stuff
+const SHAKE : int = 500
+var camera : Camera2D
+
+@export var decay : float = 0.6 # Time it takes to reach 0% of trauma
+@export var max_offset : Vector2 = Vector2(50, 50) # Max hor/ver shake in pixels
+@export var max_roll : float = 0.1 # Maximum rotation in radians (use sparingly)
+
+@export var trauma : float = 1.5 # Current shake strength
+@export var trauma_power : float = 2 # Trauma exponent. Increase for more extreme shaking\
+
+var oo
+var ox 
+var oy
+
+
+func _ready():
+	camera = get_viewport().get_camera_2d()
+	oo = camera.rotation
+	ox = camera.offset.x 
+	oy = camera.offset.y
+
+
 func _process(delta: float) -> void:
 	#Stops the tank if both controls are activated
 	if DirectionController.running:
 		if driving:
+			shake(Vector2(1, 1), 0.005)
 			DirectionController.direction = "Forward"
 		elif reverse:
+			shake(Vector2(1, 1), 0.005)
 			DirectionController.direction = "Reverse"
 		else:
 			DirectionController.direction = "Stopped"
@@ -64,3 +90,12 @@ func tank_shutdown():
 	DirectionController.running = false
 	DirectionController.direction = "Stopped"
 	DirectionController.rotation = "Straight"
+
+
+
+func shake(offset : Vector2, roll : float, amount : float = 1) -> void:
+	#? Set the camera's rotation and offset based on the shake strength
+	#print("Shaking: ", amount)
+	camera.rotation = roll * amount * randf_range(-1, 1)
+	camera.offset.x = ox + offset.x * amount * randf_range(-1, 1)
+	camera.offset.y = oy + offset.y * amount * randf_range(-1, 1)
