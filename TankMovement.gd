@@ -1,5 +1,6 @@
 extends CharacterBody2D
-var speed = 50
+var max_speed = 50
+var speed = 0
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
 var crashed = false
@@ -12,16 +13,29 @@ func _physics_process(delta: float) -> void:
 	elif tank_rotation == "Right":
 		rotation += 0.025
 	if tank_direction == "Forward":
+		if speed <= max_speed:
+			speed += 1
 		velocity = speed * direction
 	elif tank_direction == "Reverse":
+		if speed <= max_speed:
+			speed += 1
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
-		velocity = Vector2.ZERO
+		if speed > 0:
+			speed -= 1
+		if speed != 0:
+			if velocity < Vector2.ZERO:
+				velocity = -speed * direction
+			elif velocity > Vector2.ZERO:
+				velocity = speed * direction
+		else:
+			velocity = Vector2.ZERO
 	var collision = move_and_collide(velocity*delta)
-	if collision:
+	if collision and abs(speed) >= max_speed:
 		if not crashed:
 			DirectionController.running = false
 			crashed = true
+			speed = 0
 	else:
 		crashed = false
 
