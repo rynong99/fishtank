@@ -170,6 +170,10 @@ position = Vector2(308, -308)
 rotation = -1.55509
 shape = SubResource("WorldBoundaryShape2D_h2yge")
 
+[node name="StartupTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
 [connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
 [connection signal="body_entered" from="Wires" to="." method="_on_wires_body_entered"]
@@ -180,3 +184,4 @@ shape = SubResource("WorldBoundaryShape2D_h2yge")
 [connection signal="body_exited" from="Reverse" to="." method="_on_reverse_body_exited"]
 [connection signal="body_entered" from="Forward" to="." method="_on_forward_body_entered"]
 [connection signal="body_exited" from="Forward" to="." method="_on_forward_body_exited"]
+[connection signal="timeout" from="StartupTimer" to="." method="_on_startup_timer_timeout"]

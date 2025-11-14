@@ -14,15 +14,15 @@ func _physics_process(delta: float) -> void:
 		rotation += 0.025
 	if tank_direction == "Forward":
 		if speed <= max_speed:
-			speed += 1
+			speed += 0.5
 		velocity = speed * direction
 	elif tank_direction == "Reverse":
 		if speed <= max_speed:
-			speed += 1
+			speed += 0.5
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
 		if speed > 0:
-			speed -= 1
+			speed -= 0.5
 		if speed != 0:
 			if velocity < Vector2.ZERO:
 				velocity = -speed * direction

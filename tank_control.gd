@@ -4,7 +4,7 @@ var reverse : bool = false
 var turn_right : bool = false
 var turn_left : bool = false
 var can_start : bool = false
-
+var starting : bool = false
 
 # Camera shake stuff
 const SHAKE : int = 500
@@ -32,6 +32,7 @@ func _ready():
 func _process(delta: float) -> void:
 	#Stops the tank if both controls are activated
 	if DirectionController.running:
+		shake(Vector2(0.25, 0.25), 0.0025)
 		if driving:
 			shake(Vector2(1, 1), 0.005)
 			DirectionController.direction = "Forward"
@@ -53,6 +54,8 @@ func _process(delta: float) -> void:
 	else:
 		DirectionController.direction = "Stopped"
 		DirectionController.rotation = "Straight"
+	if starting:
+		shake(Vector2(1, 1), 0.005)
 	#Activates controls and sends signals to the global tank controller
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true
@@ -85,12 +88,12 @@ func _on_wires_body_entered(body: Node2D) -> void:
 func _on_start_button_body_entered(body: Node2D) -> void:
 	if can_start:
 		if not DirectionController.running:
-			DirectionController.running = true
+			$StartupTimer.start()
+			starting = true
 func tank_shutdown():
 	DirectionController.running = false
 	DirectionController.direction = "Stopped"
 	DirectionController.rotation = "Straight"
-
 
 
 func shake(offset : Vector2, roll : float, amount : float = 1) -> void:
@@ -99,3 +102,8 @@ func shake(offset : Vector2, roll : float, amount : float = 1) -> void:
 	camera.rotation = roll * amount * randf_range(-1, 1)
 	camera.offset.x = ox + offset.x * amount * randf_range(-1, 1)
 	camera.offset.y = oy + offset.y * amount * randf_range(-1, 1)
+
+
+func _on_startup_timer_timeout() -> void:
+	DirectionController.running = true
+	starting = false
