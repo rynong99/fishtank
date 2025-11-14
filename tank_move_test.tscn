@@ -441,6 +441,7 @@ texture = SubResource("GradientTexture2D_s8t7o")
 
 [node name="Tank" type="CharacterBody2D" parent="."]
 script = ExtResource("1_ilxhq")
+turn_rate = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tank"]
 unique_name_in_owner = true
