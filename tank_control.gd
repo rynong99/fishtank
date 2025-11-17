@@ -41,9 +41,9 @@ func _process(delta: float) -> void:
 			DirectionController.direction = "Reverse"
 		else:
 			DirectionController.direction = "Stopped"
-		if turn_right and (driving or reverse):
+		if turn_right:
 			DirectionController.rotation = "Right"
-		elif turn_left and (driving or reverse):
+		elif turn_left:
 			DirectionController.rotation = "Left"
 		else:
 			DirectionController.rotation = "Straight"
@@ -91,6 +91,7 @@ func _on_start_button_body_entered(body: Node2D) -> void:
 			$StartupTimer.start()
 			starting = true
 func tank_shutdown():
+	 
 	DirectionController.running = false
 	DirectionController.direction = "Stopped"
 	DirectionController.rotation = "Straight"

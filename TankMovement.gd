@@ -1,8 +1,8 @@
 extends CharacterBody2D
-@export var max_speed : int= 50
+@export var max_speed : int= 25
 var speed : float = 0
 @export var acceleration : float = 0.1
-@export var turn_rate : float = 0.025
+@export var turn_rate : float = 1
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
 var crashed = false
@@ -11,9 +11,9 @@ func _physics_process(delta: float) -> void:
 	get_tank_rotation()
 	var direction = Vector2.UP.rotated(rotation)
 	if tank_rotation == "Left":
-		rotation_degrees -= turn_rate
+		rotation -= turn_rate*delta/5
 	elif tank_rotation == "Right":
-		rotation_degrees += turn_rate
+		rotation += turn_rate*delta/5
 	if tank_direction == "Forward":
 		if speed <= max_speed:
 			speed += acceleration

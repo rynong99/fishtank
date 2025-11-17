@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwuoi3n3s8n7w"]
 
 [ext_resource type="Script" uid="uid://dd0gqfec0gci8" path="res://player1.gd" id="1_ng0wg"]
-[ext_resource type="Texture2D" uid="uid://b4lnuxnqqvlde" path="res://ArtAssets/Orange_Fish.png" id="2_ytgb6"]
+[ext_resource type="Texture2D" uid="uid://b3pnano85xw5" path="res://ArtAssets/—Pngtree—side view of a swimming_18154589.png" id="2_ytgb6"]
 [ext_resource type="Shape2D" uid="uid://blkxjqdt5aimc" path="res://FIsh.tres" id="3_3pafw"]
 
 [node name="Player1" type="RigidBody2D"]
@@ -12,8 +12,8 @@ linear_damp = 3.0
 script = ExtResource("1_ng0wg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 7.62939e-06)
-scale = Vector2(0.2, 0.194)
+position = Vector2(-1, 4.54747e-13)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_ytgb6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckjidu8l6gobv"]
+
+[ext_resource type="Texture2D" uid="uid://lo0sh5yxvyec" path="res://ArtAssets/toppng.com-black-army-boots-1159x1183.png" id="1_wm107"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8m3i"]
+radius = 9.37172
+height = 57.9515
+
+[node name="Boot" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wm107")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 214)
+rotation = 1.2474
+scale = Vector2(20.687, 13.8607)
+shape = SubResource("CapsuleShape2D_g8m3i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(196, -46)
+rotation = 0.0332612
+scale = Vector2(21.1233, -14.4484)
+shape = SubResource("CapsuleShape2D_g8m3i")

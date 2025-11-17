@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3m8up2jnr05q"]
+
+[ext_resource type="Texture2D" uid="uid://1qhmt2kd3jjv" path="res://ArtAssets/MRE.png" id="1_sjmyl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j0x0"]
+radius = 11.3068
+
+[node name="Mre" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.886331
+texture = ExtResource("1_sjmyl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(17.6, 8.84)
+shape = SubResource("CapsuleShape2D_6j0x0")

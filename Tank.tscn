@@ -27,7 +27,7 @@ position = Vector2(1002, 343)
 
 [node name="Right" type="Area2D" parent="."]
 z_index = -1
-position = Vector2(768, 315)
+position = Vector2(868, 165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 shape = SubResource("RectangleShape2D_0xm2m")
@@ -90,7 +90,7 @@ text = "Start Button
 
 [node name="Left" type="Area2D" parent="."]
 z_index = -1
-position = Vector2(384, 315)
+position = Vector2(284, 165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
 shape = SubResource("RectangleShape2D_0xm2m")
