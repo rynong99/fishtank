@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DirectionController="*res://direction_controller.gd"
+DirectionController="*res://Scripts/direction_controller.gd"
 
 [input]
 

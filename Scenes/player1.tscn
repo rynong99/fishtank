@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwuoi3n3s8n7w"]
 
-[ext_resource type="Script" uid="uid://dd0gqfec0gci8" path="res://player1.gd" id="1_ng0wg"]
+[ext_resource type="Script" uid="uid://dd0gqfec0gci8" path="res://Scripts/player1.gd" id="1_ng0wg"]
 [ext_resource type="Texture2D" uid="uid://b3pnano85xw5" path="res://ArtAssets/—Pngtree—side view of a swimming_18154589.png" id="2_ytgb6"]
 [ext_resource type="Shape2D" uid="uid://blkxjqdt5aimc" path="res://FIsh.tres" id="3_3pafw"]
 

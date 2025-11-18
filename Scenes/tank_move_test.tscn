@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://d1yph1vvvay2r"]
 
 [ext_resource type="Texture2D" uid="uid://bsll3434hw8p3" path="res://ArtAssets/pngegg(2).png" id="1_ijqg4"]
-[ext_resource type="Script" uid="uid://dt2vyjbtaejoq" path="res://TankMovement.gd" id="1_ilxhq"]
+[ext_resource type="Script" uid="uid://dt2vyjbtaejoq" path="res://Scripts/TankMovement.gd" id="1_ilxhq"]
 [ext_resource type="Texture2D" uid="uid://x7s0kxc87qxr" path="res://ArtAssets/angle-vehicle-merkava-9812035cb8870bab037221d5cc78abf2.png" id="2_nxqqa"]
 [ext_resource type="Texture2D" uid="uid://cmi7hkmfxfswb" path="res://ArtAssets/pngegg(3).png" id="2_ogedf"]
 [ext_resource type="Texture2D" uid="uid://dyh3gk0g8ncnl" path="res://ArtAssets/Czech Hedgehog Anti Tank Obstacle.G03.watermarked.2k.png" id="2_rqrev"]
