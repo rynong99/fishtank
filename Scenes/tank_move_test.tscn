@@ -78,30 +78,32 @@ position = Vector2(0, -39)
 scale = Vector2(1, 2.21875)
 texture = SubResource("GradientTexture2D_nxqqa")
 
-[node name="Start Line" type="StaticBody2D" parent="."]
+[node name="Start_Line" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(12.5, 0)
 scale = Vector2(0.0625, 0.0625)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Line"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_Line"]
 position = Vector2(-200, 176)
 shape = SubResource("RectangleShape2D_0s1gw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Start Line"]
+[node name="Sprite2D" type="Sprite2D" parent="Start_Line"]
 position = Vector2(-200, 176)
 scale = Vector2(1.9375, 0.21875)
 texture = SubResource("GradientTexture2D_ijqg4")
 
-[node name="Finish Line" type="StaticBody2D" parent="."]
+[node name="Finish_Line" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(12.5, 0)
 scale = Vector2(0.0625, 0.0625)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish Line"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish_Line"]
 position = Vector2(-200, -960)
 shape = SubResource("RectangleShape2D_qujdl")
 
-[node name="Sprite2D" type="Sprite2D" parent="Finish Line"]
+[node name="Sprite2D" type="Sprite2D" parent="Finish_Line"]
 position = Vector2(-200, -960)
 scale = Vector2(1.9375, 0.21875)
 texture = SubResource("GradientTexture2D_rqrev")

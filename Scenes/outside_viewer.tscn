@@ -14,9 +14,9 @@ grow_vertical = 2
 [node name="Running Light" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 695.0
-offset_top = 292.0
+offset_top = 342.0
 offset_right = 727.0
-offset_bottom = 324.0
+offset_bottom = 374.0
 color = Color(1, 0, 0, 1)
 script = ExtResource("1_t3i44")
 
@@ -26,9 +26,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -185.0
-offset_top = 22.0
+offset_top = 50.0
 offset_right = 163.0
-offset_bottom = 279.0
+offset_bottom = 307.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
@@ -110,3 +110,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "This is a timer.
 "
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_right = 1112.0
+offset_bottom = 27.0
+value = 50.0

@@ -6,9 +6,27 @@ var speed : float = 0
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
 var crashed = false
+
+var total_distance : float
+var progress_bar : ProgressBar
+	
+func _ready() -> void:
+	# Get the total distance to finish the course
+	total_distance = %Start_Line.get_child(0).position.distance_to(%Finish_Line.get_child(0).position)
+	print(total_distance)
+	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
+	print(progress_bar.value)
+
+func _process(_delta: float) -> void:
+	var progress = position.distance_to(%Finish_Line.get_child(0).position)
+	print(progress) 
+	progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
+	print(progress_bar.value)
+
 func _physics_process(delta: float) -> void:
 	get_tank_direction()
 	get_tank_rotation()
+	
 	var direction = Vector2.UP.rotated(rotation)
 	if tank_rotation == "Left":
 		rotation -= turn_rate*delta/5

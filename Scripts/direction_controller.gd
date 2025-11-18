@@ -8,7 +8,7 @@ var running = false
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#print(direction)
 	#print(rotation)
 	pass
