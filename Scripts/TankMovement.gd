@@ -12,13 +12,13 @@ var progress_bar : ProgressBar
 	
 func _ready() -> void:
 	# Get the total distance to finish the course
-	total_distance = %Start_Line.get_child(0).position.distance_to(%Finish_Line.get_child(0).position)
+	total_distance = %Start_Line.position.distance_to(%Finish_Line.position)
 	print(total_distance)
 	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
 	print(progress_bar.value)
 
 func _process(_delta: float) -> void:
-	var progress = position.distance_to(%Finish_Line.get_child(0).position)
+	var progress = position.distance_to(%Finish_Line.position)
 	print(progress) 
 	progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
 	print(progress_bar.value)
