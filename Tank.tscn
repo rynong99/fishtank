@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://nfy167dcahmv"]
+
+[ext_resource type="PackedScene" uid="uid://yp3opx1gpe4l" path="res://player1.tscn" id="1_0xm2m"]
+[ext_resource type="Script" path="res://tank_control.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cvbbw8n0omqey" path="res://player2.tscn" id="2_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(64, 63)
+
+[sub_resource type="Gradient" id="Gradient_bv1fj"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1bvp3"]
+gradient = SubResource("Gradient_bv1fj")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2yge"]
+
+[node name="Tank" type="Node2D"]
+script = ExtResource("1_h2yge")
+
+[node name="Player1" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(232, 345)
+
+[node name="Player2" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(1002, 343)
+
+[node name="Right" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(868, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Right"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Right"]
+offset_left = -28.0
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Right
+
+"
+
+[node name="Wires" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(1118, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wires"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wires"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Wires"]
+offset_left = -28.0
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Wires
+
+
+"
+
+[node name="Start Button" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(37, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Button"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Start Button"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Start Button"]
+offset_left = -28.0
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Start Button
+
+
+
+"
+
+[node name="Left" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(284, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Left"]
+offset_left = -33.0
+offset_top = -34.0
+offset_right = 33.0
+offset_bottom = 30.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Left
+
+"
+
+[node name="Reverse" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(384, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reverse"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reverse"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Reverse"]
+offset_left = -33.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Reverse
+
+"
+
+[node name="Forward" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(768, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forward"]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Forward"]
+texture = SubResource("GradientTexture2D_1bvp3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Forward"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 34.0
+offset_bottom = 32.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Forward
+"
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(841, 613)
+
+[node name="Bottom" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(-252, 34)
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="Top" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(-252, -612)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="Left" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(-841, -306)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="Right" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(308, -308)
+rotation = -1.55509
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="StartupTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
+[connection signal="body_entered" from="Wires" to="." method="_on_wires_body_entered"]
+[connection signal="body_entered" from="Start Button" to="." method="_on_start_button_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]
+[connection signal="body_entered" from="Reverse" to="." method="_on_reverse_body_entered"]
+[connection signal="body_exited" from="Reverse" to="." method="_on_reverse_body_exited"]
+[connection signal="body_entered" from="Forward" to="." method="_on_forward_body_entered"]
+[connection signal="body_exited" from="Forward" to="." method="_on_forward_body_exited"]
+[connection signal="timeout" from="StartupTimer" to="." method="_on_startup_timer_timeout"]

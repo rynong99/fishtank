@@ -1,0 +1,602 @@
+[gd_scene load_steps=20 format=3 uid="uid://ungk2gr3m6g0"]
+
+[ext_resource type="Texture2D" uid="uid://bsll3434hw8p3" path="res://ArtAssets/pngegg(2).png" id="1_ijqg4"]
+[ext_resource type="Script" path="res://TankMovement.gd" id="1_ilxhq"]
+[ext_resource type="Texture2D" uid="uid://x7s0kxc87qxr" path="res://ArtAssets/angle-vehicle-merkava-9812035cb8870bab037221d5cc78abf2.png" id="2_nxqqa"]
+[ext_resource type="Texture2D" uid="uid://cmi7hkmfxfswb" path="res://ArtAssets/pngegg(3).png" id="2_ogedf"]
+[ext_resource type="Texture2D" uid="uid://dyh3gk0g8ncnl" path="res://ArtAssets/Czech Hedgehog Anti Tank Obstacle.G03.watermarked.2k.png" id="2_rqrev"]
+[ext_resource type="Texture2D" uid="uid://bymvwb3ueg7cw" path="res://ArtAssets/pngegg(4).png" id="3_tox37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxqqa"]
+size = Vector2(124, 284)
+
+[sub_resource type="Gradient" id="Gradient_h2yge"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0.498039, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nxqqa"]
+gradient = SubResource("Gradient_h2yge")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilxhq"]
+size = Vector2(64, 141.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s1gw"]
+size = Vector2(128, 20)
+
+[sub_resource type="Gradient" id="Gradient_rqrev"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ijqg4"]
+gradient = SubResource("Gradient_rqrev")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qujdl"]
+size = Vector2(128, 20)
+
+[sub_resource type="Gradient" id="Gradient_s8t7o"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rqrev"]
+gradient = SubResource("Gradient_s8t7o")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogedf"]
+size = Vector2(16, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilxhq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8t7o"]
+size = Vector2(0.5, 1)
+
+[node name="TankMoveTest" type="Node2D"]
+
+[node name="Grass" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(12, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass"]
+position = Vector2(30, -98)
+shape = SubResource("RectangleShape2D_nxqqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass"]
+position = Vector2(30, -98)
+scale = Vector2(1.9375, 4.4375)
+texture = SubResource("GradientTexture2D_nxqqa")
+
+[node name="Grass2" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-20, -5)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass2"]
+position = Vector2(0, -39.125)
+shape = SubResource("RectangleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass2"]
+position = Vector2(0, -39)
+scale = Vector2(1, 2.21875)
+texture = SubResource("GradientTexture2D_nxqqa")
+
+[node name="Start Line" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(12.5, 0)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Line"]
+position = Vector2(-200, 176)
+shape = SubResource("RectangleShape2D_0s1gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Start Line"]
+position = Vector2(-200, 176)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_ijqg4")
+
+[node name="Finish Line" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(12.5, 0)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish Line"]
+position = Vector2(-200, -960)
+shape = SubResource("RectangleShape2D_qujdl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Finish Line"]
+position = Vector2(-200, -960)
+scale = Vector2(1.9375, 0.21875)
+texture = SubResource("GradientTexture2D_rqrev")
+
+[node name="RedCar" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -5)
+rotation = 2.64177
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCar"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="RedCar"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ijqg4")
+
+[node name="RedCar2" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -15)
+rotation = -6.62566
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCar2"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="RedCar2"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ijqg4")
+
+[node name="White Car" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -14)
+rotation = -0.429495
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="White Car2" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(2, -17)
+rotation = -2.71994
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car2"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car2"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="Blue Car" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -11)
+rotation = 0.533051
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue Car"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Blue Car"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_tox37")
+
+[node name="Blue Car2" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -23)
+rotation = 2.74099
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue Car2"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Blue Car2"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_tox37")
+
+[node name="RedCar3" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -30)
+rotation = 2.77813
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCar3"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="RedCar3"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ijqg4")
+
+[node name="RedCar4" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -40)
+rotation = -6.5297
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCar4"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="RedCar4"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ijqg4")
+
+[node name="White Car3" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -39)
+rotation = -5.92349
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car3"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car3"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="White Car5" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(1, -36)
+rotation = -3.76817
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car5"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car5"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="White Car4" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(2, -42)
+rotation = 3.52727
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car4"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car4"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="Blue Car3" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -33)
+rotation = 0.375196
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue Car3"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Blue Car3"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_tox37")
+
+[node name="Blue Car4" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -48)
+rotation = 2.35613
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue Car4"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Blue Car4"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_tox37")
+
+[node name="RedCar5" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -57)
+rotation = -6.5998
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedCar5"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="RedCar5"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ijqg4")
+
+[node name="White Car6" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -58)
+rotation = -6.25989
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car6"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car6"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="White Car7" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -53)
+rotation = -2.60439
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="White Car7"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="White Car7"]
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ogedf")
+
+[node name="Blue Car5" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -55)
+rotation = -0.396147
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue Car5"]
+shape = SubResource("RectangleShape2D_ogedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Blue Car5"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_tox37")
+
+[node name="TankTrap3" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(1, -13)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap3"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap3"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap4" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(2, -13)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap4"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap4"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap5" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -13)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap5"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap5"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap12" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(1, -33)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap12"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap12"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap13" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(2, -33)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap13"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap13"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap14" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -33)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap14"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap14"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap15" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -46)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap15"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap15"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap16" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-2, -46)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap16"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap16"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap17" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-1, -46)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap17"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap17"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap18" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-1, -49)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap18"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap18"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap19" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(0, -49)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap19"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap19"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap20" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(1, -49)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap20"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap20"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap21" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -52)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap21"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap21"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap22" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-2, -52)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap22"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap22"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap23" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-1, -52)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap23"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap23"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap6" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(0, -21)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap6"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap6"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap7" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(1, -21)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap7"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap7"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap8" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-3, -28)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap8"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap8"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap9" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(-2, -28)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap9"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap9"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap10" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(2, -28)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap10"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap10"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="TankTrap11" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(3, -28)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankTrap11"]
+shape = SubResource("CircleShape2D_ilxhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TankTrap11"]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_rqrev")
+
+[node name="Tank" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ilxhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_s8t7o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tank"]
+rotation = 1.5708
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("2_nxqqa")
+
+[node name="Camera2D" type="Camera2D" parent="Tank"]
+ignore_rotation = false

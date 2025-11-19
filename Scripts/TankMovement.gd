@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
 		if speed != 0:
-			speed -= acceleration/10
+			speed -= acceleration/7.5
 			if velocity < Vector2.ZERO:
 				velocity = -speed * direction
 			elif velocity > Vector2.ZERO:
