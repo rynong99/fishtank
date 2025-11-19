@@ -10,6 +10,7 @@ var crashed = false
 var total_distance : float
 var progress_bar : ProgressBar
 var progress : PathFollow2D
+var speedometer : TextureProgressBar
 	
 func _ready() -> void:
 	# Get the total distance to finish the course
@@ -18,6 +19,7 @@ func _ready() -> void:
 	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
 	#progress = %Progress
 	print(progress_bar.value)
+	speedometer = find_parent("OutsideViewer").find_child("Speedometer")
 
 func _process(_delta: float) -> void:
 	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
@@ -30,7 +32,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	get_tank_direction()
 	get_tank_rotation()
-	
+	var prev_vel = velocity
 	var direction = Vector2.UP.rotated(rotation)
 	if tank_rotation == "Left":
 		rotation -= turn_rate*delta/5
@@ -61,6 +63,8 @@ func _physics_process(delta: float) -> void:
 			speed = 0 
 	else:
 		crashed = false
+	
+	speedometer.value = remap(speed, 0, max_speed, 0 , 100.0)
 
 func get_tank_direction():
 	tank_direction = DirectionController.direction
