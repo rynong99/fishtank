@@ -10,6 +10,7 @@ var crashed = false
 var total_distance : float
 var progress_bar : ProgressBar
 var progress : PathFollow2D
+var speedometer : TextureProgressBar
 	
 func _ready() -> void:
 	# Get the total distance to finish the course
@@ -18,6 +19,7 @@ func _ready() -> void:
 	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
 	#progress = %Progress
 	print(progress_bar.value)
+	speedometer = find_parent("OutsideViewer").find_child("Speedometer")
 
 func _process(_delta: float) -> void:
 	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
