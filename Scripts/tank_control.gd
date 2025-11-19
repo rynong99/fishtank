@@ -108,3 +108,8 @@ func shake(offset : Vector2, roll : float, amount : float = 1) -> void:
 func _on_startup_timer_timeout() -> void:
 	DirectionController.running = true
 	starting = false
+
+
+func _on_wires_body_exited(body: Node2D) -> void:
+	if body is Fish1 or body is Fish2:
+		can_start = false
