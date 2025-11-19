@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 DirectionController="*res://Scripts/direction_controller.gd"
+GameVar="*res://Scripts/Game.gd"
+AudioManager="*res://audio_manager.gd"
+
+[global_group]
+
+Trash=""
 
 [input]
 

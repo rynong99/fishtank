@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dir55ohfmcb1a"]
+[gd_scene load_steps=8 format=3 uid="uid://yrr2n1ybua4b"]
 
-[ext_resource type="PackedScene" uid="uid://dwuoi3n3s8n7w" path="res://Scenes/player1.tscn" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://4lffmnfkwbu4" path="res://Scripts/tank_control.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://1gqbkm31rowv" path="res://Scenes/player2.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://ckjidu8l6gobv" path="res://Trash(Mobs)/Boot.tscn" id="2_qhpjb"]
-[ext_resource type="PackedScene" uid="uid://c3m8up2jnr05q" path="res://Trash(Mobs)/MRE.tscn" id="3_nf4gg"]
-[ext_resource type="PackedScene" uid="uid://duun62c122mks" path="res://Trash(Mobs)/Can.tscn" id="4_kvoy7"]
+[ext_resource type="PackedScene" uid="uid://c120bymp1ws75" path="res://player1.tscn" id="1_0xm2m"]
+[ext_resource type="Script" path="res://tank_control.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cyq1u0qv7c6bg" path="res://player2.tscn" id="2_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(64, 63)
@@ -19,17 +16,8 @@ gradient = SubResource("Gradient_bv1fj")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2yge"]
 
-[sub_resource type="Curve2D" id="Curve2D_c4qva"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, -2, 0, 0, 0, 0, 1153, -3, 0, 0, 0, 0, 1156, 651, 0, 0, 0, 0, -1, 652, 0, 0, 0, 0, -1, -2)
-}
-point_count = 5
-
 [node name="Tank" type="Node2D"]
 script = ExtResource("1_h2yge")
-boot = ExtResource("2_qhpjb")
-mre = ExtResource("3_nf4gg")
-can = ExtResource("4_kvoy7")
 
 [node name="Player1" parent="." instance=ExtResource("1_0xm2m")]
 position = Vector2(232, 345)
@@ -185,21 +173,9 @@ shape = SubResource("WorldBoundaryShape2D_h2yge")
 [node name="StartupTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="TrashPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_c4qva")
-
-[node name="TrashSpawn" type="PathFollow2D" parent="TrashPath"]
-position = Vector2(-1, -2)
-rotation = -0.000866551
-
-[node name="TrashTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
 [connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
 [connection signal="body_entered" from="Wires" to="." method="_on_wires_body_entered"]
-[connection signal="body_exited" from="Wires" to="." method="_on_wires_body_exited"]
 [connection signal="body_entered" from="Start Button" to="." method="_on_start_button_body_entered"]
 [connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
 [connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]
@@ -208,4 +184,3 @@ one_shot = true
 [connection signal="body_entered" from="Forward" to="." method="_on_forward_body_entered"]
 [connection signal="body_exited" from="Forward" to="." method="_on_forward_body_exited"]
 [connection signal="timeout" from="StartupTimer" to="." method="_on_startup_timer_timeout"]
-[connection signal="timeout" from="TrashTimer" to="." method="_on_trash_timer_timeout"]

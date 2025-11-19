@@ -1,24 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckjidu8l6gobv"]
+[gd_scene load_steps=4 format=3 uid="uid://ckjidu8l6gobv"]
 
+[ext_resource type="Script" uid="uid://bwwxafon7m2et" path="res://Scripts/trash.gd" id="1_g8m3i"]
 [ext_resource type="Texture2D" uid="uid://lo0sh5yxvyec" path="res://ArtAssets/toppng.com-black-army-boots-1159x1183.png" id="1_wm107"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8m3i"]
-radius = 9.37172
-height = 57.9515
+radius = 1.65102
+height = 10.7941
 
-[node name="Boot" type="RigidBody2D"]
+[node name="Boot" type="RigidBody2D" groups=["Trash"]]
+collision_layer = 2
+collision_mask = 2
+mass = 10.0
+gravity_scale = 0.0
+script = ExtResource("1_g8m3i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_wm107")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14, 214)
+position = Vector2(1, 44)
 rotation = 1.2474
 scale = Vector2(20.687, 13.8607)
 shape = SubResource("CapsuleShape2D_g8m3i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(196, -46)
-rotation = 0.0332612
+position = Vector2(28, -2)
+rotation = 0.371458
 scale = Vector2(21.1233, -14.4484)
 shape = SubResource("CapsuleShape2D_g8m3i")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

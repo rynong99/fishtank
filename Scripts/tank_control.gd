@@ -5,6 +5,10 @@ var turn_right : bool = false
 var turn_left : bool = false
 var can_start : bool = false
 var starting : bool = false
+@export var boot : PackedScene
+@export var mre : PackedScene
+@export var can : PackedScene
+@onready var trash_list = [boot,mre,can]
 
 # Camera shake stuff
 const SHAKE : int = 500
@@ -30,8 +34,12 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	if GameVar.dirtiness > 10.0:
+		spawn_trash()
+		GameVar.dirtiness = 0
 	#Stops the tank if both controls are activated
 	if DirectionController.running:
+		GameVar.dirtiness += 2*delta
 		shake(Vector2(0.25, 0.25), 0.0025)
 		if driving:
 			shake(Vector2(1, 1), 0.005)
@@ -113,3 +121,42 @@ func _on_startup_timer_timeout() -> void:
 func _on_wires_body_exited(body: Node2D) -> void:
 	if body is Fish1 or body is Fish2:
 		can_start = false
+
+
+func _on_trash_timer_timeout() -> void:
+	#var trash = trash_list[randi_range(0,trash_list.get_length()-1)]
+	var trash = trash_list[randi_range(0,trash_list.size()-1)].instantiate()
+	# Choose a random location on Path2D.
+	var trash_spawn_location = $TrashPath/TrashSpawn
+	trash_spawn_location.progress_ratio = randf()
+	# Set the mob's position to the random location.
+	trash.position = trash_spawn_location.position
+	# Set the mob's direction perpendicular to the path direction.
+	var direction = trash_spawn_location.rotation + PI / 2
+	# Add some randomness to the direction.
+	direction += randf_range(-PI / 4, PI / 4)
+	trash.rotation = direction
+
+	# Choose the velocity for the mob.
+	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	trash.linear_velocity = velocity.rotated(direction)
+
+	# Spawn the mob by adding it to the Main scene.
+	add_child(trash)
+func spawn_trash():
+	var trash = trash_list[randi_range(0,trash_list.size()-1)].instantiate()
+	# Choose a random location on Path2D.
+	var trash_spawn_location = $TrashPath/TrashSpawn
+	trash_spawn_location.progress_ratio = randf()
+	# Set the mob's position to the random location.
+	trash.position = trash_spawn_location.position
+	# Set the mob's direction perpendicular to the path direction.
+	var direction = trash_spawn_location.rotation + PI / 2
+	# Add some randomness to the direction.
+	direction += randf_range(-PI / 4, PI / 4)
+	trash.rotation = direction
+	# Choose the velocity for the mob.
+	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	trash.linear_velocity = velocity.rotated(direction)
+	# Spawn the mob by adding it to the Main scene.
+	add_child(trash)

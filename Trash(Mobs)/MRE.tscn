@@ -1,16 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3m8up2jnr05q"]
+[gd_scene load_steps=4 format=3 uid="uid://c3m8up2jnr05q"]
 
+[ext_resource type="Script" uid="uid://bwwxafon7m2et" path="res://Scripts/trash.gd" id="1_6j0x0"]
 [ext_resource type="Texture2D" uid="uid://1qhmt2kd3jjv" path="res://ArtAssets/MRE.png" id="1_sjmyl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j0x0"]
-radius = 11.3068
+radius = 5.39773
+height = 14.7059
 
-[node name="Mre" type="RigidBody2D"]
+[node name="Mre" type="RigidBody2D" groups=["Trash"]]
+collision_layer = 2
+collision_mask = 2
+mass = 10.0
+gravity_scale = 0.0
+script = ExtResource("1_6j0x0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -0.886331
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_sjmyl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(17.6, 8.84)
 shape = SubResource("CapsuleShape2D_6j0x0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
