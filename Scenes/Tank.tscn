@@ -176,6 +176,7 @@ one_shot = true
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
 [connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
 [connection signal="body_entered" from="Wires" to="." method="_on_wires_body_entered"]
+[connection signal="body_exited" from="Wires" to="." method="_on_wires_body_exited"]
 [connection signal="body_entered" from="Start Button" to="." method="_on_start_button_body_entered"]
 [connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
 [connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]

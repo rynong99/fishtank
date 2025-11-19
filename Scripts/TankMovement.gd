@@ -9,21 +9,23 @@ var crashed = false
 
 var total_distance : float
 var progress_bar : ProgressBar
-var speedometer : TextureProgressBar
+var progress : PathFollow2D
 	
 func _ready() -> void:
 	# Get the total distance to finish the course
-	total_distance = %Start_Line.position.distance_to(%Finish_Line.position)
+	#total_distance = %Start_Line.get_child(0).position.distance_to(%Finish_Line.get_child(0).position)
 	#print(total_distance)
 	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
-	#print(progress_bar.value)
-	speedometer = find_parent("OutsideViewer").find_child("Speedometer")
+	#progress = %Progress
+	print(progress_bar.value)
 
 func _process(_delta: float) -> void:
-	var progress = position.distance_to(%Finish_Line.position)
-	#print(progress) 
-	progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
-	#print(progress_bar.value)
+	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
+	print(progress) 
+	#progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
+	%Progress.progress = %Path.get_curve().get_baked_length() + %Tank.position.y
+	progress_bar.value = remap(%Progress.progress_ratio,0,1,100,0)
+	print(progress_bar.value)
 
 func _physics_process(delta: float) -> void:
 	get_tank_direction()
@@ -44,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
 		if speed != 0:
-			speed -= acceleration/10
+			speed -= acceleration/7.5
 			if velocity < Vector2.ZERO:
 				velocity = -speed * direction
 			elif velocity > Vector2.ZERO:
@@ -56,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if not crashed:
 			DirectionController.running = false
 			crashed = true
-			speed = 0
+			speed = 0 
 	else:
 		crashed = false
 	
