@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqcoa3gbbljx1"]
+[gd_scene load_steps=5 format=3 uid="uid://dqcoa3gbbljx1"]
 
 [ext_resource type="Script" uid="uid://is7bsb3vbypb" path="res://Scripts/running_light.gd" id="1_t3i44"]
 [ext_resource type="PackedScene" uid="uid://d1yph1vvvay2r" path="res://Scenes/tank_move_test.tscn" id="1_uwmg1"]
+
+[sub_resource type="Gradient" id="Gradient_ditux"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.647887, 0.760563)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o5cxx"]
+gradient = SubResource("Gradient_ditux")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="OutsideViewer" type="Control"]
 layout_mode = 3
@@ -118,3 +128,23 @@ offset_left = 32.0
 offset_right = 1112.0
 offset_bottom = 27.0
 value = 50.0
+
+[node name="Speedometer" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 556.0
+offset_right = 192.0
+offset_bottom = 735.0
+fill_mode = 4
+radial_initial_angle = 270.0
+radial_fill_degrees = 180.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_o5cxx")
+
+[node name="Label" type="Label" parent="Speedometer"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -22.0
+offset_right = 147.0
+offset_bottom = 1.0
+text = "Speedometer"

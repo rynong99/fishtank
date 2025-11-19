@@ -57,41 +57,51 @@ func _process(delta: float) -> void:
 	if starting:
 		shake(Vector2(1, 1), 0.005)
 	#Activates controls and sends signals to the global tank controller
+
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true
 	#print("Driving...")
+
 func _on_forward_body_exited(body: Node2D) -> void:
 	driving = false
 	#print("Stopping...")
+
 func _on_reverse_body_entered(body: Node2D) -> void:
 	reverse = true
 	#print("Reversing...")
+
 func _on_reverse_body_exited(body: Node2D) -> void:
 	reverse = false
 	#print("Stopping...")
+
 func _on_right_body_entered(body: Node2D) -> void:
 		turn_right = true
 		#print("Turning Right")
+
 func _on_right_body_exited(body: Node2D) -> void:
 	if turn_right:
 		turn_right = false
 		#print("Going Straight")
+
 func _on_left_body_entered(body: Node2D) -> void:
 	turn_left = true
+
 func _on_left_body_exited(body: Node2D) -> void:
 	if turn_left:
 		turn_left = false
 		#print("Going Straight")
+
 func _on_wires_body_entered(body: Node2D) -> void:
 	if body is Fish1 or body is Fish2:
 		can_start = true
+
 func _on_start_button_body_entered(body: Node2D) -> void:
 	if can_start:
 		if not DirectionController.running:
 			$StartupTimer.start()
 			starting = true
-func tank_shutdown():
-	 
+
+func tank_shutdown():	 
 	DirectionController.running = false
 	DirectionController.direction = "Stopped"
 	DirectionController.rotation = "Straight"
