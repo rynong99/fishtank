@@ -9,18 +9,22 @@ var crashed = false
 
 var total_distance : float
 var progress_bar : ProgressBar
+var progress : PathFollow2D
 	
 func _ready() -> void:
 	# Get the total distance to finish the course
-	total_distance = %Start_Line.get_child(0).position.distance_to(%Finish_Line.get_child(0).position)
-	print(total_distance)
+	#total_distance = %Start_Line.get_child(0).position.distance_to(%Finish_Line.get_child(0).position)
+	#print(total_distance)
 	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
+	#progress = %Progress
 	print(progress_bar.value)
 
 func _process(_delta: float) -> void:
-	var progress = position.distance_to(%Finish_Line.get_child(0).position)
+	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
 	print(progress) 
-	progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
+	#progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
+	%Progress.progress = %Path.get_curve().get_baked_length() + %Tank.position.y
+	progress_bar.value = remap(%Progress.progress_ratio,0,1,100,0)
 	print(progress_bar.value)
 
 func _physics_process(delta: float) -> void:
@@ -54,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if not crashed:
 			DirectionController.running = false
 			crashed = true
-			speed = 0
+			speed = 0 
 	else:
 		crashed = false
 
