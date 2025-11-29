@@ -108,6 +108,7 @@ func _on_start_button_body_entered(body: Node2D) -> void:
 		if not DirectionController.running:
 			$StartupTimer.start()
 			starting = true
+			$GameStart.visible = false
 
 func tank_shutdown():	 
 	DirectionController.running = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dir55ohfmcb1a"]
+[gd_scene load_steps=13 format=3 uid="uid://dir55ohfmcb1a"]
 
 [ext_resource type="PackedScene" uid="uid://dwuoi3n3s8n7w" path="res://Scenes/player1.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://4lffmnfkwbu4" path="res://Scripts/tank_control.gd" id="1_h2yge"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ckjidu8l6gobv" path="res://Trash(Mobs)/Boot.tscn" id="2_qhpjb"]
 [ext_resource type="PackedScene" uid="uid://c3m8up2jnr05q" path="res://Trash(Mobs)/MRE.tscn" id="3_nf4gg"]
 [ext_resource type="PackedScene" uid="uid://duun62c122mks" path="res://Trash(Mobs)/Can.tscn" id="4_kvoy7"]
+[ext_resource type="Texture2D" uid="uid://dihj1p0v58add" path="res://ArtAssets/pngimg.com - red_arrow_PNG20.png" id="7_nf4gg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(64, 63)
@@ -195,6 +196,30 @@ rotation = -0.000866551
 [node name="TrashTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="GameStart" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="GameStart"]
+offset_left = 309.0
+offset_top = 402.0
+offset_right = 850.0
+offset_bottom = 471.0
+theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Start the tank to begin"
+
+[node name="Pngimg_com-RedArrowPng20" type="Sprite2D" parent="GameStart"]
+position = Vector2(1023, 253)
+rotation = 0.401728
+scale = Vector2(0.0712891, 0.0712891)
+texture = ExtResource("7_nf4gg")
+
+[node name="Pngimg_com-RedArrowPng21" type="Sprite2D" parent="GameStart"]
+position = Vector2(133, 248)
+rotation = 2.52645
+scale = Vector2(0.0712891, 0.0712891)
+texture = ExtResource("7_nf4gg")
 
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
 [connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
