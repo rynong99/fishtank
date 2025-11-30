@@ -10,7 +10,7 @@ height = 14.7059
 [node name="Mre" type="RigidBody2D" groups=["Trash"]]
 collision_layer = 2
 collision_mask = 2
-mass = 10.0
+mass = 5.0
 gravity_scale = 0.0
 script = ExtResource("1_6j0x0")
 

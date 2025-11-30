@@ -73,7 +73,7 @@ func _on_forward_body_entered(body: Node2D) -> void:
 func _on_forward_body_exited(body: Node2D) -> void:
 	driving = false
 	#print("Stopping...")
-
+	
 func _on_reverse_body_entered(body: Node2D) -> void:
 	reverse = true
 	#print("Reversing...")
@@ -167,7 +167,7 @@ func spawn_trash():
 	direction += randf_range(-PI / 4, PI / 4)
 	trash.rotation = direction
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity = Vector2(randf_range(250.0, 350.0), 0.0)
 	trash.linear_velocity = velocity.rotated(direction)
 	# Spawn the mob by adding it to the Main scene.
 	add_child(trash)
