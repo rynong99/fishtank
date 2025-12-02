@@ -40,12 +40,14 @@ func _process(delta: float) -> void:
 	#Stops the tank if both controls are activated
 	if DirectionController.running:
 		GameVar.dirtiness += 2*delta
-		shake(Vector2(0.25, 0.25), 0.0025)
+		shake(Vector2(0.25, 0.25), 0.0025) # Shake when running
+		AudioManager.play_sfx("Motor")
+		AudioManager.play_sfx("Water")
 		if driving:
-			shake(Vector2(1, 1), 0.005)
+			shake(Vector2(1, 1), 0.005) # Shake when moving
 			DirectionController.direction = "Forward"
 		elif reverse:
-			shake(Vector2(1, 1), 0.005)
+			shake(Vector2(1, 1), 0.005) # Shake when moving
 			DirectionController.direction = "Reverse"
 		else:
 			DirectionController.direction = "Stopped"
@@ -62,6 +64,9 @@ func _process(delta: float) -> void:
 	else:
 		DirectionController.direction = "Stopped"
 		DirectionController.rotation = "Straight"
+		AudioManager.stop_sfx("Motor")
+		AudioManager.stop_sfx("Water")
+		
 	if starting:
 		shake(Vector2(1, 1), 0.005)
 	#Activates controls and sends signals to the global tank controller

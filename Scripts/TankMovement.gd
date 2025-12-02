@@ -13,21 +13,23 @@ var progress : PathFollow2D
 var speedometer : TextureProgressBar
 	
 func _ready() -> void:
+	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar") # Find the progress bar
+	speedometer = find_parent("OutsideViewer").find_child("Speedometer") # Find the speedometer
+	
 	# Get the total distance to finish the course
 	#total_distance = %Start_Line.get_child(0).position.distance_to(%Finish_Line.get_child(0).position)
 	#print(total_distance)
-	progress_bar = find_parent("OutsideViewer").find_child("ProgressBar")
 	#progress = %Progress
-	print(progress_bar.value)
-	speedometer = find_parent("OutsideViewer").find_child("Speedometer")
 
 func _process(_delta: float) -> void:
-	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
-	print(progress) 
-	#progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
-	%Progress.progress = %Path.get_curve().get_baked_length() + %Tank.position.y
+	# Update progress bar
+	%Progress.progress = %Path.get_curve().get_baked_length() + %Tank.position.y 
 	progress_bar.value = remap(%Progress.progress_ratio,0,1,100,0)
-	print(progress_bar.value)
+	
+	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
+	#print(progress) 
+	#progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
+	#print(progress_bar.value)
 
 func _physics_process(delta: float) -> void:
 	get_tank_direction()
@@ -47,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			speed += acceleration
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
-		if speed != 0:
+		if speed > 0:
 			speed -= acceleration/7.5
 			if velocity < Vector2.ZERO:
 				velocity = -speed * direction
@@ -56,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity = Vector2.ZERO
 	var collision = move_and_collide(velocity*delta)
-	if collision and abs(speed) >= max_speed:
+	if collision and abs(speed) >= max_speed: # ???
 		if not crashed:
 			DirectionController.running = false
 			crashed = true
@@ -64,7 +66,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		crashed = false
 	
-	speedometer.value = remap(speed, 0, max_speed, 0 , 100.0)
+	speedometer.value = remap(speed, 0, max_speed, 0 , 100.0) # Update Speedometer
+	
+	if speed > 0:
+		AudioManager.play_sfx("Squeak")
+	else:
+		AudioManager.stop_sfx("Squeak")
 
 func get_tank_direction():
 	tank_direction = DirectionController.direction
