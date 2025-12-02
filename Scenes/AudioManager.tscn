@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7ng8dnwebj3f"]
+[gd_scene load_steps=6 format=3 uid="uid://c7ng8dnwebj3f"]
 
 [ext_resource type="Script" uid="uid://bg5qmlc6kaxmu" path="res://audio_manager.gd" id="1_dygvs"]
 [ext_resource type="AudioStream" uid="uid://b6rgw1vpns83p" path="res://Audio/FishTank_Motor_Base.mp3" id="2_i2xd5"]
 [ext_resource type="AudioStream" uid="uid://dmlpm4qs6p2gk" path="res://Audio/FishTank_Water_Sloshing.mp3" id="3_u6owb"]
 [ext_resource type="AudioStream" uid="uid://b3neo4t1qkwss" path="res://Audio/FishTank_Squeaking.mp3" id="4_yq78e"]
+[ext_resource type="AudioStream" uid="uid://ctqcucetim7te" path="res://Audio/FishTank_Electroshock.mp3" id="5_ncvnl"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_dygvs")
@@ -25,3 +26,6 @@ parameters/looping = false
 [node name="Squeak" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("4_yq78e")
 parameters/looping = false
+
+[node name="Electric" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("5_ncvnl")
