@@ -48,23 +48,16 @@ func _physics_process(delta: float) -> void:
 			speed += acceleration
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
-		print("Tank is Stopped")
 		if speed > 0:
-			print("Speed is greater than 0")
 			speed -= acceleration
 			var tv : Vector2
 			if velocity < Vector2.ZERO:
-				print("Velocity is less than 0")
 				tv = -speed * direction.abs()
 			elif velocity > Vector2.ZERO:
-				print("Velocity is greater than 0")
 				tv = speed * direction.abs()
 			velocity = tv
-			print("Velocity is: ", velocity)
 		else:
-			print("Speed is less than zero")
 			velocity = Vector2.ZERO
-		print()
 	
 	var collision = move_and_collide(velocity*delta)
 	if collision and abs(speed) >= max_speed: # ???
