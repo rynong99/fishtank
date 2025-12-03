@@ -4,6 +4,7 @@ var speed : float = 0
 @export var acceleration : float = 0.1
 @export var turn_rate : float = 1
 var tank_direction = DirectionController.direction
+var prev_td = DirectionController.direction
 var tank_rotation = DirectionController.rotation
 
 var total_distance : float
@@ -39,13 +40,18 @@ func _physics_process(delta: float) -> void:
 		rotation -= turn_rate*delta/5
 	elif tank_rotation == "Right":
 		rotation += turn_rate*delta/5
+	
 	if tank_direction == "Forward":
 		if speed <= max_speed:
 			speed += acceleration
+		if prev_td != "Forward":
+			speed = 0
 		velocity = speed * direction
 	elif tank_direction == "Reverse":
 		if speed <= max_speed:
 			speed += acceleration
+		if prev_td != "Reverse":
+			speed = 0
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
 		if speed > 0:
@@ -75,6 +81,7 @@ func _physics_process(delta: float) -> void:
 	# not at 0?
 
 func get_tank_direction():
+	prev_td = tank_direction
 	tank_direction = DirectionController.direction
 func get_tank_rotation():
 	tank_rotation = DirectionController.rotation
