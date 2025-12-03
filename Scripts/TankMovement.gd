@@ -48,14 +48,24 @@ func _physics_process(delta: float) -> void:
 			speed += acceleration
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
+		print("Tank is Stopped")
 		if speed > 0:
-			speed -= acceleration/7.5
+			print("Speed is greater than 0")
+			speed -= acceleration
+			var tv : Vector2
 			if velocity < Vector2.ZERO:
-				velocity = -speed * direction
+				print("Velocity is less than 0")
+				tv = -speed * direction.abs()
 			elif velocity > Vector2.ZERO:
-				velocity = speed * direction
+				print("Velocity is greater than 0")
+				tv = speed * direction.abs()
+			velocity = tv
+			print("Velocity is: ", velocity)
 		else:
+			print("Speed is less than zero")
 			velocity = Vector2.ZERO
+		print()
+	
 	var collision = move_and_collide(velocity*delta)
 	if collision and abs(speed) >= max_speed: # ???
 		if not DirectionController.crashed:
@@ -67,10 +77,9 @@ func _physics_process(delta: float) -> void:
 	
 	speedometer.value = remap(speed, 0, max_speed, 0 , 100.0) # Update Speedometer
 	
-	if speed > 0:
-		AudioManager.play_sfx("Squeak")
-	else:
-		AudioManager.stop_sfx("Squeak")
+	# Speed acts weird... why does the tank not
+	# move and yet the speed and velocity are 
+	# not at 0?
 
 func get_tank_direction():
 	tank_direction = DirectionController.direction
