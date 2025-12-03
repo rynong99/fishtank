@@ -21,6 +21,7 @@ func update_timer_display():
 	var minutes = total_time_seconds / 60
 	var seconds = total_time_seconds % 60
 	timer_label.text = "%02d:%02d" % [minutes, seconds]
+	GameVar.score = str(timer_label.text)
 	
 func start_timer():
 	timer_node.start()
