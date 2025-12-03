@@ -65,6 +65,9 @@ func _process(delta: float) -> void:
 	if starting:
 		shake(Vector2(1, 1), 0.005)
 	#Activates controls and sends signals to the global tank controller
+	
+	if GameVar.finished:
+		%GameOver.visible = true
 
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true

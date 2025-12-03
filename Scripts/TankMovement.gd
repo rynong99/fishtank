@@ -11,6 +11,7 @@ var total_distance : float
 var progress_bar : ProgressBar
 var progress : PathFollow2D
 var speedometer : TextureProgressBar
+
 	
 func _ready() -> void:
 	# Get the total distance to finish the course
@@ -23,11 +24,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	#var progress = position.distance_to(%Finish_Line.get_child(0).position)
-	print(progress) 
+	#print(progress) 
 	#progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
 	%Progress.progress = %Path.get_curve().get_baked_length() + %Tank.position.y
 	progress_bar.value = remap(%Progress.progress_ratio,0,1,100,0)
 	print(progress_bar.value)
+	game_over()
 
 func _physics_process(delta: float) -> void:
 	get_tank_direction()
@@ -70,3 +72,7 @@ func get_tank_direction():
 	tank_direction = DirectionController.direction
 func get_tank_rotation():
 	tank_rotation = DirectionController.rotation
+
+func game_over():
+	if progress_bar.value == 100:
+		GameVar.finished = true
