@@ -140,6 +140,7 @@ func _on_start_button_body_entered(body: Node2D) -> void:
 			$StartupTimer.start()
 			starting = true
 			$GameStart.visible = false
+			GameVar.start = true
 			AudioManager.play_sfx("Electric")
 
 func tank_shutdown():	 
