@@ -5,7 +5,6 @@ var speed : float = 0
 @export var turn_rate : float = 1
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
-var crashed = false
 
 var total_distance : float
 var progress_bar : ProgressBar
@@ -28,7 +27,6 @@ func _process(_delta: float) -> void:
 	#progress_bar.value = remap(progress, total_distance, 0, 0, 100.0)
 	%Progress.progress = %Path.get_curve().get_baked_length() + %Tank.position.y
 	progress_bar.value = remap(%Progress.progress_ratio,0,1,100,0)
-	print(progress_bar.value)
 	game_over()
 
 func _physics_process(delta: float) -> void:
@@ -59,12 +57,9 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 	var collision = move_and_collide(velocity*delta)
 	if collision and abs(speed) >= max_speed:
-		if not crashed:
-			DirectionController.running = false
-			crashed = true
+		if not DirectionController.crashed:
+			DirectionController.crashed = true
 			speed = 0 
-	else:
-		crashed = false
 	
 	speedometer.value = remap(speed, 0, max_speed, 0 , 100.0)
 
@@ -74,5 +69,5 @@ func get_tank_rotation():
 	tank_rotation = DirectionController.rotation
 
 func game_over():
-	if progress_bar.value == 2:
+	if progress_bar.value >= 99:
 		GameVar.finished = true

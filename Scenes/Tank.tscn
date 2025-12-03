@@ -217,6 +217,7 @@ texture = ExtResource("7_nf4gg")
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Score" type="Label" parent="GameOver"]
 anchors_preset = 8
