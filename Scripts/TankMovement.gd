@@ -74,5 +74,5 @@ func get_tank_rotation():
 	tank_rotation = DirectionController.rotation
 
 func game_over():
-	if progress_bar.value == 100:
+	if progress_bar.value == 2:
 		GameVar.finished = true

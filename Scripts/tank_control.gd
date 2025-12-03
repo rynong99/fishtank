@@ -95,6 +95,7 @@ func _process(delta: float) -> void:
 	
 	if GameVar.finished:
 		%GameOver.visible = true
+		$GameOver/Score.text = GameVar.score
 
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true

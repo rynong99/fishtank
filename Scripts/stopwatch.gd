@@ -13,6 +13,9 @@ func _process(delta: float) -> void:
 	if GameVar.start and not running:	
 		start_timer()
 		running = true
+	if GameVar.finished:	
+		timer_node.stop()
+		running = false
 func _on_timer_timeout():
 	total_time_seconds += 1
 	update_timer_display()
