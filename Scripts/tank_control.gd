@@ -92,6 +92,9 @@ func _process(delta: float) -> void:
 			$Player2/AnimatedSprite2D.play()
 			
 	#Activates controls and sends signals to the global tank controller
+	
+	if GameVar.finished:
+		%GameOver.visible = true
 
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true
