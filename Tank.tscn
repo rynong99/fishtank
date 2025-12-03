@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://yrr2n1ybua4b"]
+[gd_scene load_steps=7 format=3 uid="uid://yrr2n1ybua4b"]
 
 [ext_resource type="PackedScene" uid="uid://c120bymp1ws75" path="res://player1.tscn" id="1_0xm2m"]
-[ext_resource type="Script" path="res://tank_control.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cyq1u0qv7c6bg" path="res://player2.tscn" id="2_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
@@ -17,7 +16,6 @@ gradient = SubResource("Gradient_bv1fj")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2yge"]
 
 [node name="Tank" type="Node2D"]
-script = ExtResource("1_h2yge")
 
 [node name="Player1" parent="." instance=ExtResource("1_0xm2m")]
 position = Vector2(232, 345)

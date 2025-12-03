@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7ng8dnwebj3f"]
+[gd_scene load_steps=8 format=3 uid="uid://cccspnojoy571"]
 
 [ext_resource type="Script" uid="uid://bg5qmlc6kaxmu" path="res://audio_manager.gd" id="1_dygvs"]
 [ext_resource type="AudioStream" uid="uid://b6rgw1vpns83p" path="res://Audio/FishTank_Motor_Base.mp3" id="2_i2xd5"]
 [ext_resource type="AudioStream" uid="uid://dmlpm4qs6p2gk" path="res://Audio/FishTank_Water_Sloshing.mp3" id="3_u6owb"]
+[ext_resource type="AudioStream" uid="uid://btkedw5pn6ayj" path="res://Audio/car-crash-sound-376882.mp3" id="3_vbys1"]
+[ext_resource type="AudioStream" uid="uid://cc5jr110uvju2" path="res://Audio/tank-moving-143104.mp3" id="3_x8qvj"]
 [ext_resource type="AudioStream" uid="uid://b3neo4t1qkwss" path="res://Audio/FishTank_Squeaking.mp3" id="4_yq78e"]
-[ext_resource type="AudioStream" uid="uid://ctqcucetim7te" path="res://Audio/FishTank_Electroshock.mp3" id="5_ncvnl"]
+[ext_resource type="AudioStream" uid="uid://c6r1vr6pgswjt" path="res://Audio/bug-zapper-47300.mp3" id="7_vbys1"]
 
-[node name="AudioManager" type="Node"]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("crash")]
 script = ExtResource("1_dygvs")
+crash = NodePath("Sfx/Crash")
 
 [node name="Music" type="Node" parent="."]
 unique_name_in_owner = true
@@ -17,10 +20,26 @@ unique_name_in_owner = true
 
 [node name="Motor" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("2_i2xd5")
+volume_db = 10.0
+pitch_scale = 0.5
+parameters/looping = false
+
+[node name="Crash" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("3_vbys1")
+volume_db = -10.0
+pitch_scale = 0.8
+parameters/looping = false
+
+[node name="Whine" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("3_x8qvj")
+volume_db = -20.0
+pitch_scale = 0.8
 parameters/looping = false
 
 [node name="Water" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("3_u6owb")
+volume_db = 0.8
+pitch_scale = 0.8
 parameters/looping = false
 
 [node name="Squeak" type="AudioStreamPlayer" parent="Sfx"]
@@ -28,4 +47,5 @@ stream = ExtResource("4_yq78e")
 parameters/looping = false
 
 [node name="Electric" type="AudioStreamPlayer" parent="Sfx"]
-stream = ExtResource("5_ncvnl")
+stream = ExtResource("7_vbys1")
+pitch_scale = 1.8

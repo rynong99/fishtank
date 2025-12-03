@@ -5,6 +5,7 @@ var turn_right : bool = false
 var turn_left : bool = false
 var can_start : bool = false
 var starting : bool = false
+var zapped_fish : int = 0
 @export var boot : PackedScene
 @export var mre : PackedScene
 @export var can : PackedScene
@@ -31,13 +32,21 @@ func _ready():
 	oo = camera.rotation
 	ox = camera.offset.x 
 	oy = camera.offset.y
-
+	$Player1/AnimatedSprite2D.animation = "default"
+	$Player2/AnimatedSprite2D.animation = "default"
+	$Player1/AnimatedSprite2D.play()
+	$Player2/AnimatedSprite2D.play()
 
 func _process(delta: float) -> void:
 	if GameVar.dirtiness > 10.0:
 		spawn_trash()
 		GameVar.dirtiness = 0
 	#Stops the tank if both controls are activated
+	if DirectionController.crashed:
+		shake(Vector2(0.1, 0.1), 0.05,1)
+		AudioManager.play_sfx("Crash")
+		for i in range(5):
+			spawn_trash()
 	if DirectionController.running:
 		GameVar.dirtiness += 2*delta
 		shake(Vector2(0.25, 0.25), 0.0025) # Shake when running
@@ -46,15 +55,19 @@ func _process(delta: float) -> void:
 		if driving:
 			shake(Vector2(1, 1), 0.005) # Shake when moving
 			DirectionController.direction = "Forward"
+			AudioManager.play_sfx("Whine")
 		elif reverse:
 			shake(Vector2(1, 1), 0.005) # Shake when moving
 			DirectionController.direction = "Reverse"
+			AudioManager.play_sfx("Whine")
 		else:
 			DirectionController.direction = "Stopped"
 		if turn_right:
 			DirectionController.rotation = "Right"
+			AudioManager.play_sfx("Whine")
 		elif turn_left:
 			DirectionController.rotation = "Left"
+			AudioManager.play_sfx("Whine")
 		else:
 			DirectionController.rotation = "Straight"
 		if driving and reverse:
@@ -66,9 +79,18 @@ func _process(delta: float) -> void:
 		DirectionController.rotation = "Straight"
 		AudioManager.stop_sfx("Motor")
 		AudioManager.stop_sfx("Water")
+		AudioManager.stop_sfx("Whine")
 		
 	if starting:
 		shake(Vector2(1, 1), 0.005)
+	if zapped_fish != 0 and starting:
+		if zapped_fish == 1:
+			$Player1/AnimatedSprite2D.animation = "Zap"
+			$Player1/AnimatedSprite2D.play()
+		if zapped_fish == 2:
+			$Player2/AnimatedSprite2D.animation = "Zap"
+			$Player2/AnimatedSprite2D.play()
+			
 	#Activates controls and sends signals to the global tank controller
 
 func _on_forward_body_entered(body: Node2D) -> void:
@@ -107,6 +129,10 @@ func _on_left_body_exited(body: Node2D) -> void:
 func _on_wires_body_entered(body: Node2D) -> void:
 	if body is Fish1 or body is Fish2:
 		can_start = true
+		if body is Fish1:
+			zapped_fish = 1
+		if body is Fish2:
+			zapped_fish = 2
 
 func _on_start_button_body_entered(body: Node2D) -> void:
 	if can_start:
@@ -120,6 +146,9 @@ func tank_shutdown():
 	DirectionController.running = false
 	DirectionController.direction = "Stopped"
 	DirectionController.rotation = "Straight"
+	AudioManager.stop_sfx("Motor")
+	AudioManager.stop_sfx("Water")
+	AudioManager.stop_sfx("Whine")
 
 
 func shake(offset : Vector2, roll : float, amount : float = 1) -> void:

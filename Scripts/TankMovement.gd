@@ -5,7 +5,6 @@ var speed : float = 0
 @export var turn_rate : float = 1
 var tank_direction = DirectionController.direction
 var tank_rotation = DirectionController.rotation
-var crashed = false
 
 var total_distance : float
 var progress_bar : ProgressBar
@@ -59,12 +58,12 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 	var collision = move_and_collide(velocity*delta)
 	if collision and abs(speed) >= max_speed: # ???
-		if not crashed:
+		if not DirectionController.crashed:
 			DirectionController.running = false
-			crashed = true
+			DirectionController.crashed = true
 			speed = 0 
 	else:
-		crashed = false
+		DirectionController.crashed = false
 	
 	speedometer.value = remap(speed, 0, max_speed, 0 , 100.0) # Update Speedometer
 	

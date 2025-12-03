@@ -8,6 +8,6 @@ func _physics_process(delta: float) -> void:
 	apply_central_force(velocity)
 func _process(delta: float) -> void:
 	if velocity.x > 0:
-		$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = true
 	elif velocity.x < 0:
-		$Sprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = false

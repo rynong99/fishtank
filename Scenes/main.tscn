@@ -6,6 +6,7 @@
 [node name="UnifiedGame" type="Node"]
 
 [node name="OutsideViewer" parent="." instance=ExtResource("1_uu6xs")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Tank" parent="." instance=ExtResource("2_r0du0")]
 max_offset = Vector2(2.5, 2.5)

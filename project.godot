@@ -21,6 +21,10 @@ DirectionController="*res://Scripts/direction_controller.gd"
 GameVar="*res://Scripts/Game.gd"
 AudioManager="*res://Scenes/AudioManager.tscn"
 
+[display]
+
+window/size/resizable=false
+
 [global_group]
 
 Trash=""

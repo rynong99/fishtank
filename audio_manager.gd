@@ -12,6 +12,7 @@ var active_sfx : AudioStreamPlayer
 var sfx_playing = []
 var xp_index := 0	
 var pitch_array := [ .8, .9, 1, 1.2, 1.3]
+@export var crash : AudioStreamPlayer
 
 
 
