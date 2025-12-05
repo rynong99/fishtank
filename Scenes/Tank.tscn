@@ -1,19 +1,19 @@
-<<<<<<< HEAD
 [gd_scene load_steps=17 format=3 uid="uid://dir55ohfmcb1a"]
-=======
-[gd_scene load_steps=13 format=3 uid="uid://dir55ohfmcb1a"]
->>>>>>> parent of 42b6673 (Merge pull request #2 from rynong99/Piper)
 
 [ext_resource type="Script" uid="uid://4lffmnfkwbu4" path="res://Scripts/tank_control.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ckjidu8l6gobv" path="res://Trash(Mobs)/Boot.tscn" id="2_qhpjb"]
 [ext_resource type="PackedScene" uid="uid://c3m8up2jnr05q" path="res://Trash(Mobs)/MRE.tscn" id="3_nf4gg"]
 [ext_resource type="PackedScene" uid="uid://duun62c122mks" path="res://Trash(Mobs)/Can.tscn" id="4_kvoy7"]
+[ext_resource type="Texture2D" uid="uid://bs8jqosl5rhh3" path="res://ArtAssets/Best Lever.png" id="5_d3564"]
+[ext_resource type="Texture2D" uid="uid://cdla573v3vpxy" path="res://ArtAssets/New Button.png" id="7_d3564"]
+[ext_resource type="Texture2D" uid="uid://cmkhmyhibhrms" path="res://ArtAssets/New Pedal.png" id="7_lmn0b"]
 [ext_resource type="Texture2D" uid="uid://dihj1p0v58add" path="res://ArtAssets/pngimg.com - red_arrow_PNG20.png" id="7_nf4gg"]
 [ext_resource type="PackedScene" uid="uid://c120bymp1ws75" path="res://player1.tscn" id="8_abwyb"]
 [ext_resource type="PackedScene" uid="uid://cyq1u0qv7c6bg" path="res://player2.tscn" id="9_d3564"]
+[ext_resource type="Texture2D" uid="uid://57xx8npcicjo" path="res://ArtAssets/Best Wires.png" id="11_lmn0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(64, 63)
+size = Vector2(93.5, 105)
 
 [sub_resource type="Gradient" id="Gradient_bv1fj"]
 offsets = PackedFloat32Array(1)
@@ -41,12 +41,15 @@ z_index = -1
 position = Vector2(868, 165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(22, 120)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Right"]
+visible = false
 texture = SubResource("GradientTexture2D_1bvp3")
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Right"]
+visible = false
 offset_left = -28.0
 offset_top = -33.0
 offset_right = 38.0
@@ -56,24 +59,20 @@ text = "Right
 
 "
 
-<<<<<<< HEAD
 [node name="BestLever2" type="Sprite2D" parent="Right"]
 position = Vector2(34, 340)
 texture = ExtResource("5_d3564")
 
-=======
->>>>>>> parent of 42b6673 (Merge pull request #2 from rynong99/Piper)
 [node name="Wires" type="Area2D" parent="."]
 z_index = -1
 position = Vector2(1118, 315)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wires"]
-shape = SubResource("RectangleShape2D_0xm2m")
-
 [node name="Sprite2D" type="Sprite2D" parent="Wires"]
+visible = false
 texture = SubResource("GradientTexture2D_1bvp3")
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Wires"]
+visible = false
 offset_left = -28.0
 offset_top = -33.0
 offset_right = 38.0
@@ -84,17 +83,25 @@ text = "Wires
 
 "
 
+[node name="BestWires" type="Sprite2D" parent="Wires"]
+position = Vector2(-7, -16)
+scale = Vector2(0.829502, 0.829502)
+texture = ExtResource("11_lmn0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wires"]
+position = Vector2(-44, 52)
+shape = SubResource("RectangleShape2D_0xm2m")
+
 [node name="Start Button" type="Area2D" parent="."]
 z_index = -1
 position = Vector2(37, 315)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Button"]
-shape = SubResource("RectangleShape2D_0xm2m")
-
 [node name="Sprite2D" type="Sprite2D" parent="Start Button"]
+visible = false
 texture = SubResource("GradientTexture2D_1bvp3")
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Start Button"]
+visible = false
 offset_left = -28.0
 offset_top = -33.0
 offset_right = 38.0
@@ -106,17 +113,32 @@ text = "Start Button
 
 "
 
+[node name="NewButton" type="Sprite2D" parent="Start Button"]
+position = Vector2(50, -4)
+texture = ExtResource("7_d3564")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Button"]
+position = Vector2(50, -2)
+shape = SubResource("RectangleShape2D_0xm2m")
+
 [node name="Left" type="Area2D" parent="."]
 z_index = -1
 position = Vector2(284, 165)
 
+[node name="BestLever" type="Sprite2D" parent="Left"]
+position = Vector2(19, 339)
+texture = ExtResource("5_d3564")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(3, 120)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Left"]
+visible = false
 texture = SubResource("GradientTexture2D_1bvp3")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Left"]
+visible = false
 offset_left = -33.0
 offset_top = -34.0
 offset_right = 33.0
@@ -131,12 +153,15 @@ z_index = -1
 position = Vector2(384, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reverse"]
+position = Vector2(69, -18)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Reverse"]
+visible = false
 texture = SubResource("GradientTexture2D_1bvp3")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Reverse"]
+visible = false
 offset_left = -33.0
 offset_top = -32.0
 offset_right = 33.0
@@ -146,17 +171,24 @@ text = "Reverse
 
 "
 
+[node name="NewPedal" type="Sprite2D" parent="Reverse"]
+position = Vector2(71, -17)
+texture = ExtResource("7_lmn0b")
+
 [node name="Forward" type="Area2D" parent="."]
 z_index = -1
 position = Vector2(768, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Forward"]
+position = Vector2(-25, -17)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Forward"]
+visible = false
 texture = SubResource("GradientTexture2D_1bvp3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Forward"]
+visible = false
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 34.0
@@ -164,6 +196,10 @@ offset_bottom = 32.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Forward
 "
+
+[node name="NewPedal" type="Sprite2D" parent="Forward"]
+position = Vector2(-22, -16)
+texture = ExtResource("7_lmn0b")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 z_index = -1
@@ -215,12 +251,14 @@ theme_override_font_sizes/font_size = 50
 text = "Start the tank to begin"
 
 [node name="Pngimg_com-RedArrowPng20" type="Sprite2D" parent="GameStart"]
+visible = false
 position = Vector2(1023, 253)
 rotation = 0.401728
 scale = Vector2(0.0712891, 0.0712891)
 texture = ExtResource("7_nf4gg")
 
 [node name="Pngimg_com-RedArrowPng21" type="Sprite2D" parent="GameStart"]
+visible = false
 position = Vector2(133, 248)
 rotation = 2.52645
 scale = Vector2(0.0712891, 0.0712891)
