@@ -1,5 +1,3 @@
 extends Node
 var dirtiness : float = 11.0
-var start : bool = false
-var finished : bool = false
-var score : String
+var start = false
