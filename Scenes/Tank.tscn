@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dir55ohfmcb1a"]
+[gd_scene load_steps=17 format=3 uid="uid://dir55ohfmcb1a"]
 
 [ext_resource type="Script" uid="uid://4lffmnfkwbu4" path="res://Scripts/tank_control.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ckjidu8l6gobv" path="res://Trash(Mobs)/Boot.tscn" id="2_qhpjb"]
@@ -21,14 +21,6 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1bvp3"]
 gradient = SubResource("Gradient_bv1fj")
-
-[sub_resource type="Animation" id="Animation_lmn0b"]
-resource_name = "RightLever"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4g1s"]
-_data = {
-&"RightLever": SubResource("Animation_lmn0b")
-}
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2yge"]
 
@@ -67,13 +59,8 @@ text = "Right
 
 "
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Right"]
-libraries = {
-&"": SubResource("AnimationLibrary_u4g1s")
-}
-
-[node name="BestLever2" type="Sprite2D" parent="Right/AnimationPlayer"]
-position = Vector2(902, 505)
+[node name="BestLever2" type="Sprite2D" parent="Right"]
+position = Vector2(34, 340)
 texture = ExtResource("5_d3564")
 
 [node name="Wires" type="Area2D" parent="."]
