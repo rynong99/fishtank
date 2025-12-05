@@ -43,10 +43,7 @@ func _process(delta: float) -> void:
 		GameVar.dirtiness = 0
 	#Stops the tank if both controls are activated
 	if DirectionController.crashed:
-		shake(Vector2(0.1, 0.1), 0.05,1)
-		AudioManager.play_sfx("Crash")
-		for i in range(5):
-			spawn_trash()
+		tank_shutdown()
 	if DirectionController.running:
 		GameVar.dirtiness += 2*delta
 		shake(Vector2(0.25, 0.25), 0.0025) # Shake when running
@@ -92,6 +89,10 @@ func _process(delta: float) -> void:
 			$Player2/AnimatedSprite2D.play()
 			
 	#Activates controls and sends signals to the global tank controller
+	
+	if GameVar.finished:
+		%GameOver.visible = true
+		$GameOver/Score.text = GameVar.score
 
 func _on_forward_body_entered(body: Node2D) -> void:
 	driving = true
@@ -140,15 +141,22 @@ func _on_start_button_body_entered(body: Node2D) -> void:
 			$StartupTimer.start()
 			starting = true
 			$GameStart.visible = false
+			GameVar.start = true
 			AudioManager.play_sfx("Electric")
+				
 
 func tank_shutdown():	 
 	DirectionController.running = false
 	DirectionController.direction = "Stopped"
 	DirectionController.rotation = "Straight"
+	shake(Vector2(0.1, 0.1), 0.05,1)
+	AudioManager.play_sfx("Crash")
+	for i in range(5):
+		spawn_trash()
 	AudioManager.stop_sfx("Motor")
 	AudioManager.stop_sfx("Water")
 	AudioManager.stop_sfx("Whine")
+	DirectionController.crashed = false
 
 
 func shake(offset : Vector2, roll : float, amount : float = 1) -> void:
