@@ -32,7 +32,7 @@ parameters/looping = false
 
 [node name="Whine" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("3_x8qvj")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 0.8
 parameters/looping = false
 
