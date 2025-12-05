@@ -153,7 +153,7 @@ z_index = -1
 position = Vector2(384, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reverse"]
-position = Vector2(69, -18)
+position = Vector2(70, -20)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Reverse"]
@@ -180,7 +180,7 @@ z_index = -1
 position = Vector2(768, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Forward"]
-position = Vector2(-25, -17)
+position = Vector2(-25, -20)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Forward"]
@@ -242,10 +242,10 @@ one_shot = true
 unique_name_in_owner = true
 
 [node name="Label" type="Label" parent="GameStart"]
-offset_left = 309.0
-offset_top = 402.0
-offset_right = 850.0
-offset_bottom = 471.0
+offset_left = 310.0
+offset_top = 401.0
+offset_right = 851.0
+offset_bottom = 470.0
 theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Start the tank to begin"
