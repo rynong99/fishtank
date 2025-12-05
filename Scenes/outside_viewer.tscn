@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqcoa3gbbljx1"]
+[gd_scene load_steps=6 format=3 uid="uid://dqcoa3gbbljx1"]
 
 [ext_resource type="Script" uid="uid://is7bsb3vbypb" path="res://Scripts/running_light.gd" id="1_t3i44"]
 [ext_resource type="PackedScene" uid="uid://d1yph1vvvay2r" path="res://Scenes/tank_move_test.tscn" id="1_uwmg1"]
+[ext_resource type="Script" uid="uid://bkigqjy163kh6" path="res://Scripts/stopwatch.gd" id="3_o5cxx"]
 
 [sub_resource type="Gradient" id="Gradient_ditux"]
 interpolation_mode = 2
@@ -106,8 +107,11 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("3_o5cxx")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+[node name="Timer" type="Timer" parent="ColorRect"]
+
+[node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,8 +124,9 @@ offset_right = 63.5
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "This is a timer.
-"
+text = "If you see this, something has gone wrong."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -151,3 +156,5 @@ offset_top = -22.0
 offset_right = 147.0
 offset_bottom = 1.0
 text = "Speedometer"
+
+[connection signal="timeout" from="ColorRect/Timer" to="ColorRect" method="_on_timer_timeout"]
