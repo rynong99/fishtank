@@ -242,24 +242,24 @@ one_shot = true
 unique_name_in_owner = true
 
 [node name="Label" type="Label" parent="GameStart"]
-offset_left = 310.0
-offset_top = 401.0
-offset_right = 851.0
-offset_bottom = 470.0
+anchors_preset = -1
+anchor_left = 0.269097
+anchor_top = 0.618827
+anchor_right = 0.738715
+anchor_bottom = 0.725309
 theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Start the tank to begin"
+metadata/_edit_use_anchors_ = true
 
 [node name="Pngimg_com-RedArrowPng20" type="Sprite2D" parent="GameStart"]
-visible = false
-position = Vector2(1023, 253)
+position = Vector2(963, 338)
 rotation = 0.401728
 scale = Vector2(0.0712891, 0.0712891)
 texture = ExtResource("7_nf4gg")
 
 [node name="Pngimg_com-RedArrowPng21" type="Sprite2D" parent="GameStart"]
-visible = false
-position = Vector2(133, 248)
+position = Vector2(188, 280)
 rotation = 2.52645
 scale = Vector2(0.0712891, 0.0712891)
 texture = ExtResource("7_nf4gg")
@@ -269,15 +269,12 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Score" type="Label" parent="GameOver"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -177.0
-offset_top = 28.0
-offset_right = 136.0
-offset_bottom = 169.0
+anchors_preset = -1
+anchor_left = 0.346354
+anchor_top = 0.54321
+anchor_right = 0.618056
+anchor_bottom = 0.760802
+offset_top = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -285,17 +282,18 @@ text = "You finished!
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="GameOver"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -33.0
-offset_right = 64.0
-offset_bottom = 58.0
+anchors_preset = -1
+anchor_left = 0.343316
+anchor_top = 0.410494
+anchor_right = 0.615017
+anchor_bottom = 0.628086
+offset_left = 68.5
+offset_top = 25.0
+offset_right = -68.5
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -303,6 +301,7 @@ text = "You finished!
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player1" parent="." instance=ExtResource("8_abwyb")]
 position = Vector2(213, 428)
