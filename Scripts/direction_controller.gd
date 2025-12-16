@@ -4,6 +4,7 @@ var SHAKE : int = 1000
 
 var direction = "Stopped"
 var rotation = "Straight"
+var pd = "Stopped"
 var running = false
 var crashed = false
 

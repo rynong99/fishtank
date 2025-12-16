@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqcoa3gbbljx1"]
+[gd_scene load_steps=8 format=3 uid="uid://dqcoa3gbbljx1"]
 
 [ext_resource type="Script" uid="uid://is7bsb3vbypb" path="res://Scripts/running_light.gd" id="1_t3i44"]
 [ext_resource type="PackedScene" uid="uid://d1yph1vvvay2r" path="res://Scenes/tank_move_test.tscn" id="1_uwmg1"]
 [ext_resource type="Script" uid="uid://bkigqjy163kh6" path="res://Scripts/stopwatch.gd" id="3_o5cxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5cxx"]
+bg_color = Color(9.62615e-07, 0.633552, 0.964589, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_326c4"]
+bg_color = Color(0.907062, 0.460799, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_ditux"]
 interpolation_mode = 2
@@ -31,6 +37,15 @@ anchor_bottom = 0.57716
 color = Color(1, 0, 0, 1)
 script = ExtResource("1_t3i44")
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Running Light"]
+layout_mode = 0
+offset_left = -91.0005
+offset_top = -0.000152588
+offset_right = -5.00049
+offset_bottom = 27.9998
+theme_override_font_sizes/font_size = 20
+text = "Running:"
 
 [node name="Minimap" type="ColorRect" parent="."]
 layout_mode = 1
@@ -83,7 +98,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="Minimap/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(358, 253)
+size = Vector2i(357, 252)
 render_target_update_mode = 4
 
 [node name="TankMoveTest" parent="Minimap/SubViewportContainer/SubViewport" instance=ExtResource("1_uwmg1")]
@@ -125,6 +140,11 @@ layout_mode = 0
 anchor_left = 0.0277778
 anchor_right = 0.965278
 anchor_bottom = 0.0416667
+theme_override_colors/font_color = Color(0.415686, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_o5cxx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_326c4")
 value = 50.0
 metadata/_edit_use_anchors_ = true
 

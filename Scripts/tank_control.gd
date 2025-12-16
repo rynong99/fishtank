@@ -22,6 +22,8 @@ var camera : Camera2D
 @export var trauma : float = 1.5 # Current shake strength
 @export var trauma_power : float = 2 # Trauma exponent. Increase for more extreme shaking\
 
+var cp : bool = true
+
 var oo
 var ox 
 var oy
@@ -50,14 +52,19 @@ func _process(delta: float) -> void:
 		AudioManager.play_sfx("Motor")
 		AudioManager.play_sfx("Water")
 		if driving:
+			cp = true
 			shake(Vector2(1, 1), 0.005) # Shake when moving
 			DirectionController.direction = "Forward"
 			AudioManager.play_sfx("Whine")
 		elif reverse:
+			cp = true
 			shake(Vector2(1, 1), 0.005) # Shake when moving
 			DirectionController.direction = "Reverse"
 			AudioManager.play_sfx("Whine")
 		else:
+			if cp:
+				DirectionController.pd = DirectionController.direction
+				cp = false
 			DirectionController.direction = "Stopped"
 		if turn_right:
 			DirectionController.rotation = "Right"
@@ -141,6 +148,7 @@ func _on_start_button_body_entered(body: Node2D) -> void:
 			$StartupTimer.start()
 			starting = true
 			$GameStart.visible = false
+			$ControlLabels.visible = true
 			GameVar.start = true
 			AudioManager.play_sfx("Electric")
 				
