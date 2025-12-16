@@ -238,6 +238,52 @@ rotation = -0.000866551
 wait_time = 3.0
 one_shot = true
 
+[node name="ControlLabels" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="BackwardArrow" type="Sprite2D" parent="ControlLabels"]
+position = Vector2(443, 599)
+rotation = 1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("7_nf4gg")
+
+[node name="ForwardArrow" type="Sprite2D" parent="ControlLabels"]
+position = Vector2(736, 597)
+rotation = 4.71239
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("7_nf4gg")
+
+[node name="Label2" type="Label" parent="ControlLabels"]
+anchors_preset = -1
+anchor_left = 0.269461
+anchor_top = 0.619291
+anchor_right = 0.294634
+anchor_bottom = 0.725773
+offset_left = 560.581
+offset_top = -151.301
+offset_right = 563.582
+offset_bottom = -151.301
+theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "R"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="ControlLabels"]
+anchors_preset = -1
+anchor_left = 0.268956
+anchor_top = 0.618212
+anchor_right = 0.294129
+anchor_bottom = 0.724695
+offset_left = -35.837
+offset_top = -150.602
+offset_right = -35.837
+offset_bottom = -150.602
+theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "L"
+metadata/_edit_use_anchors_ = true
+
 [node name="GameStart" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
@@ -252,17 +298,47 @@ theme_override_font_sizes/font_size = 50
 text = "Start the tank to begin"
 metadata/_edit_use_anchors_ = true
 
-[node name="Pngimg_com-RedArrowPng20" type="Sprite2D" parent="GameStart"]
+[node name="StartArrow" type="Sprite2D" parent="GameStart"]
 position = Vector2(963, 338)
 rotation = 0.401728
 scale = Vector2(0.0712891, 0.0712891)
 texture = ExtResource("7_nf4gg")
 
-[node name="Pngimg_com-RedArrowPng21" type="Sprite2D" parent="GameStart"]
+[node name="WiresArrow" type="Sprite2D" parent="GameStart"]
 position = Vector2(188, 280)
 rotation = 2.52645
 scale = Vector2(0.0712891, 0.0712891)
 texture = ExtResource("7_nf4gg")
+
+[node name="Label2" type="Label" parent="GameStart"]
+anchors_preset = -1
+anchor_left = 0.269461
+anchor_top = 0.619291
+anchor_right = 0.294634
+anchor_bottom = 0.725773
+offset_left = 554.581
+offset_top = -129.301
+offset_right = 554.582
+offset_bottom = -129.301
+theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="GameStart"]
+anchors_preset = -1
+anchor_left = 0.268956
+anchor_top = 0.618212
+anchor_right = 0.294129
+anchor_bottom = 0.724695
+offset_left = -59.837
+offset_top = -196.602
+offset_right = -59.837
+offset_bottom = -196.602
+theme_override_colors/font_color = Color(1, 0.639216, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "2"
+metadata/_edit_use_anchors_ = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
