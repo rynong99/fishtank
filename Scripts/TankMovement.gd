@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector2.UP.rotated(rotation)
 	if tank_rotation == "Left":
 		rotation -= turn_rate*delta/5
-	elif tank_rotation == "Right":
+	elif tank_rotation == "Right": 
 		rotation += turn_rate*delta/5
 	if tank_direction == "Forward":
 		if speed <= max_speed:
@@ -47,11 +47,11 @@ func _physics_process(delta: float) -> void:
 			speed += acceleration
 		velocity = -speed * direction
 	elif tank_direction == "Stopped":
-		if speed != 0:
-			speed -= acceleration/7.5
-			if velocity < Vector2.ZERO:
+		if speed >= 0:
+			speed -= acceleration
+			if DirectionController.pd == "Reverse":
 				velocity = -speed * direction
-			elif velocity > Vector2.ZERO:
+			elif  DirectionController.pd == "Forward":
 				velocity = speed * direction
 		else:
 			velocity = Vector2.ZERO
